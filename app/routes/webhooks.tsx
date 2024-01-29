@@ -19,6 +19,9 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       }
 
       break;
+    case "CARTS_CREATE":
+      console.log(payload);
+      break;
     case "CUSTOMERS_DATA_REQUEST":
     case "CUSTOMERS_REDACT":
     case "SHOP_REDACT":
