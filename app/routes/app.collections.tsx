@@ -1,6 +1,6 @@
 import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { Card, Layout, Page } from "@shopify/polaris";
+import { Card, Layout, List, Page } from "@shopify/polaris";
 import { apiVersion, authenticate } from "~/shopify.server";
 
 export const query =`
@@ -61,6 +61,22 @@ const Collections = () => {
                 <Layout.Section>
                     <Card>
                         <h1>Collections</h1>
+                    </Card>
+                </Layout.Section>
+                <Layout.Section>
+                    <Card>
+                         <List type="bullet" gap="loose">
+                            {
+                                collections.map((edge: any) => {
+                                    const {node: collection} = edge;
+                                    return (
+                                        <List.Item key={collection.id}>
+                                            <h2>{collection.title}</h2>
+                                        </List.Item>
+                                    )
+                                })
+                            }
+                         </List>
                     </Card>
                 </Layout.Section>
             </Layout>
