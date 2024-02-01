@@ -2,22 +2,23 @@
 
 client_id = "6ba7aa629db07534f653599459d26f91"
 name = "remix-chat"
-application_url = "https://senator-literally-list-jul.trycloudflare.com"
+application_url = "https://meals-workforce-lt-lp.trycloudflare.com"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
 dev_store_url = "zack-store-dev.myshopify.com"
+include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "write_products, read_products"
 
 [auth]
 redirect_urls = [
-  "https://senator-literally-list-jul.trycloudflare.com/auth/callback",
-  "https://senator-literally-list-jul.trycloudflare.com/auth/shopify/callback",
-  "https://senator-literally-list-jul.trycloudflare.com/api/auth/callback"
+  "https://meals-workforce-lt-lp.trycloudflare.com/auth/callback",
+  "https://meals-workforce-lt-lp.trycloudflare.com/auth/shopify/callback",
+  "https://meals-workforce-lt-lp.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
