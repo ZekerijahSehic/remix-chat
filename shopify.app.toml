@@ -2,7 +2,7 @@
 
 client_id = "6ba7aa629db07534f653599459d26f91"
 name = "remix-chat"
-application_url = "https://meals-workforce-lt-lp.trycloudflare.com"
+application_url = "https://jenny-scoring-overnight-ate.trycloudflare.com"
 embedded = true
 
 [build]
@@ -12,13 +12,13 @@ include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products, read_products"
+scopes = "write_products, read_products, read_inventory, write_discounts "
 
 [auth]
 redirect_urls = [
-  "https://meals-workforce-lt-lp.trycloudflare.com/auth/callback",
-  "https://meals-workforce-lt-lp.trycloudflare.com/auth/shopify/callback",
-  "https://meals-workforce-lt-lp.trycloudflare.com/api/auth/callback"
+  "https://jenny-scoring-overnight-ate.trycloudflare.com/auth/callback",
+  "https://jenny-scoring-overnight-ate.trycloudflare.com/auth/shopify/callback",
+  "https://jenny-scoring-overnight-ate.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
