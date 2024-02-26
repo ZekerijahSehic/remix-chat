@@ -2,6 +2,7 @@ import { ActionFunction, json } from "@remix-run/node";
 import { Form, useActionData, useSubmit } from "@remix-run/react";
 import { Button, Card, Page, TextField } from "@shopify/polaris";
 import { useState } from "react";
+import { createCustomer } from "~/api/prisma.server";
 import { authenticate } from "~/shopify.server";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -10,7 +11,6 @@ export const action: ActionFunction = async ({ request }) => {
 
     const dynamicCustomerName = formData.get("customerName"); 
     const dynamicCustomerEmail = formData.get("customerEmail");
-    console.log("hej ", dynamicCustomerName, dynamicCustomerEmail);
 
     try {
       const response = await admin.graphql(  
@@ -46,7 +46,7 @@ export const action: ActionFunction = async ({ request }) => {
           variables: {
             "input": {
                 "email": dynamicCustomerEmail,
-                "phone": "+16469555555 ",
+                "phone": "+16469555533",
                 "firstName": dynamicCustomerName,
                 "lastName": "Lastname",
                 "addresses": [
@@ -54,7 +54,7 @@ export const action: ActionFunction = async ({ request }) => {
                     "address1": "412 fake st",
                     "city": "Ottawa",
                     "province": "ON",
-                    "phone": "+16469999999",
+                    "phone": "+16469999933",
                     "zip": "A1A 4A1",
                     "lastName": "Lastname",
                     "firstName": "Steve",
@@ -69,15 +69,21 @@ export const action: ActionFunction = async ({ request }) => {
       if(response.ok ) {
         console.log("hit");
           const data = await response.json();
-          console.log(data);
+          
+          await createCustomer({
+            name: dynamicCustomerName,
+            email: dynamicCustomerEmail
+          })
+
           return json ({
-                data: data .data
+                data: data.data
           });  
       }
       return null; 
 
     } catch(err){
         console.log("err", err);
+        return null;
     }
 } 
 
@@ -87,8 +93,6 @@ const Customer = () => {
     const submit = useSubmit();
     const actionData = useActionData<typeof action>();
     console.log("actionData", actionData);
-    console.log("name", name);
-    console.log("email", email);
 
     const generateCustomer = () => submit({}, {replace: true, method: 'POST'});
     return (
