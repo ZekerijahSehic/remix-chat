@@ -2,7 +2,7 @@
 export const createCustomer = async ({email, name}: any) => {
     return await prisma.customer.create({
       data: {
-         id: '12345',
+         id: '1',
          name: name,
          email: email
       } as any
